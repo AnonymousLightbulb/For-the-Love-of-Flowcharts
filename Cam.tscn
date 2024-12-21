@@ -68,11 +68,6 @@ toggle_mode = true
 text = "Sticky
 "
 
-[node name="Button" type="Button" parent="UI/Mode"]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-
 [node name="Text" type="TextEdit" parent="UI"]
 layout_mode = 0
 offset_left = -429.0

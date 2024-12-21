@@ -397,6 +397,7 @@ offset_right = 40.0
 offset_bottom = 41.0
 
 [node name="Confirm License" type="Button" parent="UI/Confirm License"]
+layout_mode = 0
 offset_left = -92.0
 offset_top = -43.0
 offset_right = 92.0
@@ -404,6 +405,7 @@ text = "Open License
 "
 
 [node name="Cancel License" type="Button" parent="UI/Confirm License"]
+layout_mode = 0
 offset_left = -92.0
 offset_right = 92.0
 offset_bottom = 43.0

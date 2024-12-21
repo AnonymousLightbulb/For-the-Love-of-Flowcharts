@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpb0quq37dnh6"]
+
+[ext_resource type="Texture2D" uid="uid://evw7i6uujngs" path="res://arrow.png" id="1_02vwj"]
+[ext_resource type="Script" path="res://Connection.cs" id="2_4x30q"]
+
+[node name="Directional Connection" type="Line2D" node_paths=PackedStringArray("Display")]
+z_index = -1
+points = PackedVector2Array(0, 0, 0, 0)
+texture = ExtResource("1_02vwj")
+texture_mode = 2
+antialiased = true
+script = ExtResource("2_4x30q")
+Display = NodePath("Display")
+
+[node name="Display" type="Button" parent="."]
+offset_left = -20.5
+offset_top = -5.0
+offset_right = 20.5
+offset_bottom = 5.0
+
+[connection signal="pressed" from="Display" to="." method="SetAsCurrentSticky"]

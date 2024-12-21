@@ -1,0 +1,516 @@
+[gd_scene load_steps=6 format=3 uid="uid://cx4il0xhyiavk"]
+
+[ext_resource type="Script" path="res://Cam.cs" id="1_ac0aa"]
+[ext_resource type="PackedScene" uid="uid://c6tph8x47c5p5" path="res://Sticky.tscn" id="2_tiovj"]
+[ext_resource type="PackedScene" uid="uid://biti7keowmadn" path="res://Connection.tscn" id="3_8cudt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yurdm"]
+
+[sub_resource type="Theme" id="Theme_jbod3"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_yurdm")
+Button/styles/disabled_mirrored = SubResource("StyleBoxEmpty_yurdm")
+Button/styles/hover = SubResource("StyleBoxEmpty_yurdm")
+Button/styles/hover_mirrored = SubResource("StyleBoxEmpty_yurdm")
+Button/styles/hover_pressed = SubResource("StyleBoxEmpty_yurdm")
+Button/styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_yurdm")
+Button/styles/normal = SubResource("StyleBoxEmpty_yurdm")
+Button/styles/normal_mirrored = SubResource("StyleBoxEmpty_yurdm")
+Button/styles/pressed = SubResource("StyleBoxEmpty_yurdm")
+Button/styles/pressed_mirrored = null
+
+[node name="Cam" type="Camera2D" node_paths=PackedStringArray("StickyManagement", "TargetX", "TargetY", "TargetWidth", "TargetHeight", "TargetText", "TargetConnectionWidth", "RelativeToCam", "CopyClickedData", "HideUI", "HideableUI", "Mode", "ZoomInButton", "ZoomOutButton", "ShowBlankConnecions", "ConnectionManagement", "TargetTexture", "FontSize")]
+script = ExtResource("1_ac0aa")
+NewSticky = ExtResource("2_tiovj")
+NewConnection = ExtResource("3_8cudt")
+Clear = SubResource("Theme_jbod3")
+StickyManagement = NodePath("UI/Sticky Management")
+TargetX = NodePath("UI/Sticky Management/X Pos")
+TargetY = NodePath("UI/Sticky Management/Y Pos")
+TargetWidth = NodePath("UI/Sticky Management/X Size")
+TargetHeight = NodePath("UI/Sticky Management/Y Size")
+TargetText = NodePath("UI/Text")
+TargetConnectionWidth = NodePath("UI/Connection Management/Width")
+RelativeToCam = NodePath("UI/Sticky Management/Relative to Cam")
+CopyClickedData = NodePath("UI/Copy Clicked Data")
+HideUI = NodePath("Hide UI")
+HideableUI = NodePath("UI")
+Mode = NodePath("UI/Mode")
+ZoomInButton = NodePath("+")
+ZoomOutButton = NodePath("-")
+ShowBlankConnecions = NodePath("UI/Connection Management/Show Blank Connections")
+ConnectionManagement = NodePath("UI/Connection Management")
+TargetTexture = NodePath("UI/Texture Adress")
+FontSize = NodePath("UI/Font Size")
+
+[node name="+" type="Button" parent="."]
+offset_left = 558.0
+offset_top = -31.0
+offset_right = 576.0
+text = "+"
+
+[node name="-" type="Button" parent="."]
+offset_left = 558.0
+offset_right = 576.0
+offset_bottom = 31.0
+text = "-"
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Mode" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -429.0
+offset_bottom = -293.0
+toggle_mode = true
+text = "Sticky
+"
+
+[node name="Button" type="Button" parent="UI/Mode"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Text" type="TextEdit" parent="UI"]
+layout_mode = 0
+offset_left = -429.0
+offset_top = -324.0
+offset_right = -295.0
+offset_bottom = -262.0
+placeholder_text = "Text"
+
+[node name="Texture Adress" type="LineEdit" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = -340.0
+offset_top = -375.0
+offset_right = -199.0
+offset_bottom = -344.0
+placeholder_text = "Texture Adress"
+
+[node name="Copy Clicked Data" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.2
+anchor_right = 2.2
+offset_left = -576.0
+offset_top = -293.0
+offset_right = -429.0
+offset_bottom = -262.0
+toggle_mode = true
+button_pressed = true
+text = "Copy Clicked Data"
+
+[node name="Font Size" type="LineEdit" parent="UI"]
+layout_mode = 0
+offset_left = -295.0
+offset_top = -293.0
+offset_right = -217.0
+offset_bottom = -262.0
+placeholder_text = "Font Size"
+
+[node name="Sticky Management" type="Control" parent="UI"]
+process_mode = 4
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Set Texture" type="Button" parent="UI/Sticky Management"]
+layout_mode = 2
+offset_left = -295.0
+offset_top = -324.0
+offset_right = -198.0
+offset_bottom = -293.0
+text = "Set Texture"
+
+[node name="Clear Texture" type="Button" parent="UI/Sticky Management"]
+layout_mode = 2
+offset_left = -198.0
+offset_top = -324.0
+offset_right = -86.0
+offset_bottom = -293.0
+text = "Clear Texture"
+
+[node name="Relative to Cam" type="Button" parent="UI/Sticky Management"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.2
+anchor_right = 2.2
+offset_left = 2.0
+offset_top = -324.0
+offset_right = 131.0
+offset_bottom = -293.0
+toggle_mode = true
+text = "Relative to Cam"
+
+[node name="X Pos" type="LineEdit" parent="UI/Sticky Management"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.8
+anchor_right = 2.8
+offset_left = 131.0
+offset_top = -324.0
+offset_right = 240.0
+offset_bottom = -293.0
+text = "0"
+placeholder_text = "X Pos"
+
+[node name="Y Pos" type="LineEdit" parent="UI/Sticky Management"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.8
+anchor_right = 2.8
+offset_left = 240.0
+offset_top = -324.0
+offset_right = 349.0
+offset_bottom = -293.0
+text = "0"
+placeholder_text = "Y Pos"
+
+[node name="X Size" type="LineEdit" parent="UI/Sticky Management"]
+layout_mode = 2
+offset_left = 349.0
+offset_top = -324.0
+offset_right = 458.0
+offset_bottom = -293.0
+text = "0"
+placeholder_text = "X Size"
+
+[node name="Y Size" type="LineEdit" parent="UI/Sticky Management"]
+layout_mode = 2
+offset_left = 458.0
+offset_top = -324.0
+offset_right = 567.0
+offset_bottom = -293.0
+text = "0"
+placeholder_text = "Y Size"
+
+[node name="Add Sticky" type="Button" parent="UI/Sticky Management"]
+layout_mode = 2
+offset_left = -86.0
+offset_top = -324.0
+offset_right = 2.0
+offset_bottom = -293.0
+text = "Add Sticky"
+
+[node name="Set Font Size" type="Button" parent="UI/Sticky Management"]
+layout_mode = 2
+offset_left = -217.0
+offset_top = -293.0
+offset_right = -111.0
+offset_bottom = -262.0
+text = "Set Font Size"
+
+[node name="Remove Sticky" type="Button" parent="UI/Sticky Management"]
+layout_mode = 2
+offset_left = -111.0
+offset_top = -293.0
+offset_right = 9.0
+offset_bottom = -262.0
+text = "Remove Sticky"
+
+[node name="Move Sticky" type="Button" parent="UI/Sticky Management"]
+layout_mode = 2
+offset_left = 9.0
+offset_top = -293.0
+offset_right = 109.0
+offset_bottom = -262.0
+text = "Move Sticky"
+
+[node name="Offset Sticky" type="Button" parent="UI/Sticky Management"]
+layout_mode = 2
+offset_left = 109.0
+offset_top = -293.0
+offset_right = 214.0
+offset_bottom = -262.0
+text = "Offset Sticky"
+
+[node name="Write Sticky" type="Button" parent="UI/Sticky Management"]
+layout_mode = 2
+offset_left = 214.0
+offset_top = -293.0
+offset_right = 314.0
+offset_bottom = -262.0
+text = "Write Sticky"
+
+[node name="Set Sticky A" type="Button" parent="UI/Sticky Management"]
+layout_mode = 2
+offset_left = 314.0
+offset_top = -293.0
+offset_right = 411.0
+offset_bottom = -262.0
+text = "Set Sticky A"
+
+[node name="Set Sticky B" type="Button" parent="UI/Sticky Management"]
+layout_mode = 2
+offset_left = 411.0
+offset_top = -293.0
+offset_right = 508.0
+offset_bottom = -262.0
+text = "Set Sticky B"
+
+[node name="Connection Management" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_top = 1.0
+offset_right = 40.0
+offset_bottom = 41.0
+
+[node name="Set Texture" type="Button" parent="UI/Connection Management"]
+layout_mode = 0
+offset_left = -295.29
+offset_top = -325.49
+offset_right = -198.29
+offset_bottom = -294.49
+text = "Set Texture"
+
+[node name="Clear Texture" type="Button" parent="UI/Connection Management"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.43225
+anchor_top = 0.0122475
+anchor_right = 2.43225
+anchor_bottom = 0.0122475
+offset_left = -295.29
+offset_top = -325.49
+offset_right = -183.29
+offset_bottom = -294.49
+text = "Clear Texture"
+metadata/_edit_use_anchors_ = true
+
+[node name="Add Connection" type="Button" parent="UI/Connection Management"]
+layout_mode = 0
+offset_left = -86.0
+offset_top = -325.0
+offset_right = 45.0
+offset_bottom = -294.0
+text = "Add Connection
+"
+
+[node name="Remove Connection" type="Button" parent="UI/Connection Management"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = -325.0
+offset_right = 208.0
+offset_bottom = -294.0
+text = "Remove Connection
+"
+
+[node name="Write Connection" type="Button" parent="UI/Connection Management"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = -325.0
+offset_right = 351.0
+offset_bottom = -294.0
+text = "Write Connection
+"
+
+[node name="Set Font Size" type="Button" parent="UI/Connection Management"]
+layout_mode = 0
+offset_left = -217.0
+offset_top = -294.0
+offset_right = -111.0
+offset_bottom = -263.0
+toggle_mode = true
+text = "Set Font Size"
+
+[node name="Width" type="LineEdit" parent="UI/Connection Management"]
+layout_mode = 0
+offset_left = -111.0
+offset_top = -294.0
+offset_right = 15.0
+offset_bottom = -263.0
+placeholder_text = "Width"
+
+[node name="Set Width" type="Button" parent="UI/Connection Management"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -9.49275
+anchor_top = 0.78725
+anchor_right = -9.49273
+anchor_bottom = 0.78725
+offset_left = 394.71
+offset_top = -325.49
+offset_right = 491.71
+offset_bottom = -294.49
+text = "Set Width"
+
+[node name="Show Blank Connections" type="Button" parent="UI/Connection Management"]
+layout_mode = 0
+offset_left = 351.0
+offset_top = -325.0
+offset_right = 549.0
+offset_bottom = -294.0
+toggle_mode = true
+text = "Show Blank Connections"
+
+[node name="Set Midpoint" type="Button" parent="UI/Connection Management"]
+visible = false
+layout_mode = 0
+offset_left = 282.0
+offset_top = -294.0
+offset_right = 389.0
+offset_bottom = -263.0
+text = "Move Midpoint"
+
+[node name="Offset Midpoint" type="Button" parent="UI/Connection Management"]
+visible = false
+layout_mode = 0
+offset_left = 407.0
+offset_top = -294.0
+offset_right = 537.0
+offset_bottom = -263.0
+text = "Offset Midpoint"
+
+[node name="Reset Midpoint" type="Button" parent="UI/Connection Management"]
+visible = false
+layout_mode = 0
+offset_left = -576.0
+offset_top = -263.0
+offset_right = -446.0
+offset_bottom = -232.0
+text = "Reset Midpoint"
+
+[node name="Save" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 293.0
+offset_right = 530.0
+offset_bottom = 324.0
+text = "Save"
+
+[node name="Load" type="Button" parent="UI"]
+layout_mode = 0
+offset_left = 530.0
+offset_top = 293.0
+offset_right = 576.0
+offset_bottom = 324.0
+text = "Load"
+
+[node name="Confirm License" type="Control" parent="UI"]
+visible = false
+anchors_preset = 0
+offset_top = 1.0
+offset_right = 40.0
+offset_bottom = 41.0
+
+[node name="Confirm License" type="Button" parent="UI/Confirm License"]
+offset_left = -92.0
+offset_top = -43.0
+offset_right = 92.0
+text = "Open License
+"
+
+[node name="Cancel License" type="Button" parent="UI/Confirm License"]
+offset_left = -92.0
+offset_right = 92.0
+offset_bottom = 43.0
+text = "Cancel
+"
+
+[node name="Reset UI" type="Button" parent="UI"]
+visible = false
+layout_mode = 0
+offset_left = -511.0
+offset_top = 293.0
+offset_right = -439.0
+offset_bottom = 324.0
+text = "Reset UI
+"
+
+[node name="License" type="Button" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.2
+anchor_right = 2.2
+offset_left = -511.0
+offset_top = 293.0
+offset_right = -445.0
+offset_bottom = 324.0
+toggle_mode = true
+text = "License"
+
+[node name="Hide UI" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 2.2
+anchor_right = 2.2
+offset_left = -576.0
+offset_top = 293.0
+offset_right = -511.0
+offset_bottom = 324.0
+toggle_mode = true
+text = "Hide UI"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 4096
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Set Texture Sticky" type="FileDialog" parent="."]
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.bmp", "*.dds", "*.ktx")
+use_native_dialog = true
+
+[node name="Set Texture Connection" type="FileDialog" parent="."]
+auto_translate_mode = 1
+title = "Open a File"
+size = Vector2i(207, 175)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.bmp", "*.dds", "*.ktx")
+use_native_dialog = true
+
+[node name="Save Menu" type="FileDialog" parent="."]
+access = 1
+filters = PackedStringArray("*.tscn")
+use_native_dialog = true
+
+[node name="Load Menu" type="FileDialog" parent="."]
+auto_translate_mode = 1
+title = "Open a File"
+size = Vector2i(207, 175)
+ok_button_text = "Open"
+file_mode = 0
+access = 1
+filters = PackedStringArray("*.tscn")
+use_native_dialog = true
+
+[connection signal="pressed" from="UI/Sticky Management/Set Texture" to="Set Texture Sticky" method="show"]
+[connection signal="pressed" from="UI/Sticky Management/Clear Texture" to="." method="UntextureSticky"]
+[connection signal="pressed" from="UI/Sticky Management/Add Sticky" to="." method="AddSticky"]
+[connection signal="pressed" from="UI/Sticky Management/Set Font Size" to="." method="SetFontSizeSticky"]
+[connection signal="pressed" from="UI/Sticky Management/Remove Sticky" to="." method="RemoveSticky"]
+[connection signal="pressed" from="UI/Sticky Management/Move Sticky" to="." method="MoveSticky"]
+[connection signal="pressed" from="UI/Sticky Management/Offset Sticky" to="." method="OffsetSticky"]
+[connection signal="pressed" from="UI/Sticky Management/Write Sticky" to="." method="WriteSticky"]
+[connection signal="pressed" from="UI/Sticky Management/Set Sticky A" to="." method="SetA"]
+[connection signal="pressed" from="UI/Sticky Management/Set Sticky B" to="." method="SetB"]
+[connection signal="pressed" from="UI/Connection Management/Set Texture" to="Set Texture Connection" method="show"]
+[connection signal="pressed" from="UI/Connection Management/Clear Texture" to="." method="UntextureConnection"]
+[connection signal="pressed" from="UI/Connection Management/Add Connection" to="." method="AddConnection"]
+[connection signal="pressed" from="UI/Connection Management/Remove Connection" to="." method="RemoveConnection"]
+[connection signal="pressed" from="UI/Connection Management/Write Connection" to="." method="WriteConnection"]
+[connection signal="pressed" from="UI/Connection Management/Set Font Size" to="." method="SetFontSizeConnection"]
+[connection signal="pressed" from="UI/Connection Management/Set Width" to="." method="SetConnectionWidth"]
+[connection signal="pressed" from="UI/Connection Management/Set Midpoint" to="." method="MoveMidpoint"]
+[connection signal="pressed" from="UI/Connection Management/Offset Midpoint" to="." method="OffsetMidpoint"]
+[connection signal="pressed" from="UI/Connection Management/Reset Midpoint" to="." method="ResetMidpoint"]
+[connection signal="pressed" from="UI/Save" to="Save Menu" method="show"]
+[connection signal="pressed" from="UI/Load" to="Load Menu" method="show"]
+[connection signal="pressed" from="UI/Confirm License/Confirm License" to="." method="GoToLicense"]
+[connection signal="pressed" from="UI/Confirm License/Cancel License" to="UI/Confirm License" method="hide"]
+[connection signal="pressed" from="UI/Reset UI" to="." method="ResetUI"]
+[connection signal="pressed" from="UI/License" to="UI/Confirm License" method="show"]
+[connection signal="file_selected" from="Set Texture Sticky" to="." method="TextureSticky"]
+[connection signal="file_selected" from="Set Texture Connection" to="." method="TextureConnection"]
+[connection signal="file_selected" from="Save Menu" to="." method="Save"]
+[connection signal="file_selected" from="Load Menu" to="." method="Load"]

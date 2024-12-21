@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://b861vky6evb26"]
+
+[ext_resource type="Script" path="res://SaveLoad.cs" id="1_tla0x"]
+[ext_resource type="PackedScene" uid="uid://cx4il0xhyiavk" path="res://Cam.tscn" id="2_57qys"]
+
+[node name="Main" type="Control" node_paths=PackedStringArray("CurrentUI", "ConnectionList", "StickyList")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tla0x")
+CurrentUI = NodePath("Cam")
+ConnectionList = NodePath("Connections")
+StickyList = NodePath("Stickys")
+
+[node name="Connections" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="Stickys" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="Cam" parent="." instance=ExtResource("2_57qys")]

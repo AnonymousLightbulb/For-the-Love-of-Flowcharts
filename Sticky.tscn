@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6tph8x47c5p5"]
+
+[ext_resource type="Script" path="res://Sticky.cs" id="1_rus3s"]
+
+[node name="Sticky" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_constants/outline_size = 8
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_rus3s")
+
+[connection signal="pressed" from="." to="." method="SetAsCurrentSticky"]

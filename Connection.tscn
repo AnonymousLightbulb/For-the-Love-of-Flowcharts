@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://biti7keowmadn"]
+
+[ext_resource type="Script" path="res://Connection.cs" id="1_t8sfk"]
+
+[node name="Connection" type="Line2D" node_paths=PackedStringArray("Display")]
+z_index = -1
+points = PackedVector2Array(0, 0, 0, 0)
+texture_mode = 2
+antialiased = true
+script = ExtResource("1_t8sfk")
+Display = NodePath("Display")
+
+[node name="Display" type="Button" parent="."]
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+theme_override_constants/outline_size = 8
+
+[connection signal="pressed" from="Display" to="." method="SetAsCurrentSticky"]

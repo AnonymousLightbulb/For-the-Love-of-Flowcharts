@@ -148,7 +148,6 @@ offset_left = -111.0
 offset_top = -293.0
 offset_right = -4.0
 offset_bottom = -262.0
-text = "0"
 placeholder_text = "X Pos"
 
 [node name="Y Pos" type="LineEdit" parent="UI/Sticky Management"]
@@ -160,7 +159,6 @@ offset_left = -4.0
 offset_top = -293.0
 offset_right = 102.0
 offset_bottom = -262.0
-text = "0"
 placeholder_text = "Y Pos"
 
 [node name="X Size" type="LineEdit" parent="UI/Sticky Management"]
@@ -169,7 +167,6 @@ offset_left = 102.0
 offset_top = -293.0
 offset_right = 208.0
 offset_bottom = -262.0
-text = "0"
 placeholder_text = "X Size"
 
 [node name="Y Size" type="LineEdit" parent="UI/Sticky Management"]
@@ -178,7 +175,6 @@ offset_left = 208.0
 offset_top = -293.0
 offset_right = 314.0
 offset_bottom = -262.0
-text = "0"
 placeholder_text = "Y Size"
 
 [node name="Add Sticky" type="Button" parent="UI/Sticky Management"]

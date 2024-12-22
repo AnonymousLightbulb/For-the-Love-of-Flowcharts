@@ -144,10 +144,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 2.8
 anchor_right = 2.8
-offset_left = 131.0
-offset_top = -324.0
-offset_right = 240.0
-offset_bottom = -293.0
+offset_left = -111.0
+offset_top = -293.0
+offset_right = -4.0
+offset_bottom = -262.0
 text = "0"
 placeholder_text = "X Pos"
 
@@ -156,28 +156,28 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 2.8
 anchor_right = 2.8
-offset_left = 240.0
-offset_top = -324.0
-offset_right = 349.0
-offset_bottom = -293.0
+offset_left = -4.0
+offset_top = -293.0
+offset_right = 102.0
+offset_bottom = -262.0
 text = "0"
 placeholder_text = "Y Pos"
 
 [node name="X Size" type="LineEdit" parent="UI/Sticky Management"]
 layout_mode = 2
-offset_left = 349.0
-offset_top = -324.0
-offset_right = 458.0
-offset_bottom = -293.0
+offset_left = 102.0
+offset_top = -293.0
+offset_right = 208.0
+offset_bottom = -262.0
 text = "0"
 placeholder_text = "X Size"
 
 [node name="Y Size" type="LineEdit" parent="UI/Sticky Management"]
 layout_mode = 2
-offset_left = 458.0
-offset_top = -324.0
-offset_right = 567.0
-offset_bottom = -293.0
+offset_left = 208.0
+offset_top = -293.0
+offset_right = 314.0
+offset_bottom = -262.0
 text = "0"
 placeholder_text = "Y Size"
 
@@ -199,34 +199,34 @@ text = "Set Font Size"
 
 [node name="Remove Sticky" type="Button" parent="UI/Sticky Management"]
 layout_mode = 2
-offset_left = -111.0
-offset_top = -293.0
-offset_right = 9.0
-offset_bottom = -262.0
+offset_left = 131.0
+offset_top = -324.0
+offset_right = 251.0
+offset_bottom = -293.0
 text = "Remove Sticky"
 
 [node name="Move Sticky" type="Button" parent="UI/Sticky Management"]
 layout_mode = 2
-offset_left = 9.0
-offset_top = -293.0
-offset_right = 109.0
-offset_bottom = -262.0
+offset_left = 251.0
+offset_top = -324.0
+offset_right = 351.0
+offset_bottom = -293.0
 text = "Move Sticky"
 
 [node name="Offset Sticky" type="Button" parent="UI/Sticky Management"]
 layout_mode = 2
-offset_left = 109.0
-offset_top = -293.0
-offset_right = 214.0
-offset_bottom = -262.0
+offset_left = 351.0
+offset_top = -324.0
+offset_right = 456.0
+offset_bottom = -293.0
 text = "Offset Sticky"
 
 [node name="Write Sticky" type="Button" parent="UI/Sticky Management"]
 layout_mode = 2
-offset_left = 214.0
-offset_top = -293.0
-offset_right = 314.0
-offset_bottom = -262.0
+offset_left = 456.0
+offset_top = -324.0
+offset_right = 556.0
+offset_bottom = -293.0
 text = "Write Sticky"
 
 [node name="Set Sticky A" type="Button" parent="UI/Sticky Management"]

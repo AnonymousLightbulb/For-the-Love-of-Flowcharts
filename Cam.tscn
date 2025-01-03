@@ -108,6 +108,7 @@ placeholder_text = "Font Size"
 
 [node name="Sticky Management" type="Control" parent="UI"]
 process_mode = 4
+visible = false
 layout_mode = 3
 anchors_preset = 0
 
@@ -242,7 +243,6 @@ offset_bottom = -262.0
 text = "Set Sticky B"
 
 [node name="Connection Management" type="Control" parent="UI"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = 1.0
@@ -251,23 +251,23 @@ offset_bottom = 41.0
 
 [node name="Set Texture" type="Button" parent="UI/Connection Management"]
 layout_mode = 0
-offset_left = -295.29
-offset_top = -325.49
-offset_right = -198.29
-offset_bottom = -294.49
+offset_left = -295.0
+offset_top = -325.0
+offset_right = -198.0
+offset_bottom = -294.0
 text = "Set Texture"
 
 [node name="Clear Texture" type="Button" parent="UI/Connection Management"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 2.43225
-anchor_top = 0.0122475
+anchor_top = -0.0127525
 anchor_right = 2.43225
-anchor_bottom = 0.0122475
+anchor_bottom = -0.0127525
 offset_left = -295.29
-offset_top = -325.49
+offset_top = -324.49
 offset_right = -183.29
-offset_bottom = -294.49
+offset_bottom = -293.49
 text = "Clear Texture"
 metadata/_edit_use_anchors_ = true
 
@@ -449,7 +449,6 @@ title = "Open a File"
 ok_button_text = "Open"
 file_mode = 0
 access = 2
-filters = PackedStringArray("*.bmp", "*.dds", "*.ktx")
 use_native_dialog = true
 
 [node name="Set Texture Connection" type="FileDialog" parent="."]
@@ -459,7 +458,6 @@ size = Vector2i(207, 175)
 ok_button_text = "Open"
 file_mode = 0
 access = 2
-filters = PackedStringArray("*.bmp", "*.dds", "*.ktx")
 use_native_dialog = true
 
 [node name="Save Menu" type="FileDialog" parent="."]

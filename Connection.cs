@@ -31,6 +31,8 @@ public partial class Connection : Line2D//, ISaveable
 		try
 		{
 			Points = new Vector2[] {A.Position + (A.Size / 2), B.Position + (B.Size / 2)};
+			// Points[0].MoveToward(B.Position, Mathf.Sqrt((A.Size.X * A.Size.X) + (A.Size.Y * A.Size.Y)) / 2);
+			// Points[1].MoveToward(A.Position, Mathf.Sqrt((B.Size.X * B.Size.X) + (B.Size.Y * B.Size.Y)) / 2);
 			Display.Position = ((Points[0] + Points[1]) / 2) - (Display.Size / 2);
 			// Points[0] = A.Position;
 			// Points[1] = B.Position;

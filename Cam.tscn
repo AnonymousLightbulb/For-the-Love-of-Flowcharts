@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cx4il0xhyiavk"]
+[gd_scene load_steps=12 format=3 uid="uid://cx4il0xhyiavk"]
 
 [ext_resource type="Script" path="res://Cam.cs" id="1_ac0aa"]
 [ext_resource type="PackedScene" uid="uid://c6tph8x47c5p5" path="res://Sticky.tscn" id="2_tiovj"]
@@ -17,6 +17,27 @@ Button/styles/normal = SubResource("StyleBoxEmpty_yurdm")
 Button/styles/normal_mirrored = SubResource("StyleBoxEmpty_yurdm")
 Button/styles/pressed = SubResource("StyleBoxEmpty_yurdm")
 Button/styles/pressed_mirrored = null
+
+[sub_resource type="InputEventKey" id="InputEventKey_sndhn"]
+command_or_control_autoremap = true
+keycode = 83
+
+[sub_resource type="Shortcut" id="Shortcut_bgx8m"]
+events = [SubResource("InputEventKey_sndhn")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_vt02d"]
+command_or_control_autoremap = true
+keycode = 76
+
+[sub_resource type="Shortcut" id="Shortcut_wa74f"]
+events = [SubResource("InputEventKey_vt02d")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_1fs63"]
+command_or_control_autoremap = true
+keycode = 72
+
+[sub_resource type="Shortcut" id="Shortcut_jmtxg"]
+events = [SubResource("InputEventKey_1fs63")]
 
 [node name="Cam" type="Camera2D" node_paths=PackedStringArray("StickyManagement", "TargetX", "TargetY", "TargetWidth", "TargetHeight", "TargetText", "TargetConnectionWidth", "RelativeToCam", "CopyClickedData", "HideUI", "HideableUI", "Mode", "ZoomInButton", "ZoomOutButton", "ShowBlankConnecions", "ConnectionManagement", "TargetTexture", "FontSize")]
 script = ExtResource("1_ac0aa")
@@ -370,6 +391,7 @@ offset_left = 486.0
 offset_top = 293.0
 offset_right = 530.0
 offset_bottom = 324.0
+shortcut = SubResource("Shortcut_bgx8m")
 text = "Save"
 
 [node name="Load" type="Button" parent="UI"]
@@ -378,6 +400,7 @@ offset_left = 530.0
 offset_top = 293.0
 offset_right = 576.0
 offset_bottom = 324.0
+shortcut = SubResource("Shortcut_wa74f")
 text = "Load"
 
 [node name="Confirm License" type="Control" parent="UI"]
@@ -434,6 +457,7 @@ offset_top = 293.0
 offset_right = -511.0
 offset_bottom = 324.0
 toggle_mode = true
+shortcut = SubResource("Shortcut_jmtxg")
 text = "Hide UI"
 
 [node name="ColorRect" type="ColorRect" parent="."]

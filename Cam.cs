@@ -1,11 +1,12 @@
 using Godot;
 using System;
 
-public partial class Cam : Camera2D
+public partial class Cam : Control
 {
+	[Export] Camera2D Viewer;
 	[Export] public PackedScene NewSticky;
 	[Export] public PackedScene NewConnection;
-	[Export] public Theme Clear;	
+	[Export] public Theme Clear;
 	// Called when the node enters the scene tree for the first time.
 	[Export] public Control StickyManagement;
 	[Export] public Sticky CurrentSticky;
@@ -13,7 +14,7 @@ public partial class Cam : Camera2D
 	[Export] public LineEdit TargetY;
 	[Export] public LineEdit TargetWidth;
 	[Export] public LineEdit TargetHeight;
-	[Export] public TextEdit TargetText;
+	[Export] public LineEdit TargetText;
 	[Export] public LineEdit TargetConnectionWidth;
 	[Export] public Button RelativeToCam;
 	[Export] public Button CopyClickedData;
@@ -22,6 +23,10 @@ public partial class Cam : Camera2D
 	[Export] public Button Mode;
 	[Export] public Button ZoomInButton;
 	[Export] public Button ZoomOutButton;
+	[Export] public Button UpButton;
+	[Export] public Button DownButton;
+	[Export] public Button LeftButton;
+	[Export] public Button RightButton;
 	[Export] public Button ShowBlankConnecions;
 	[Export] public Control ConnectionManagement;
 	// [Export] public Control ConnectionList;
@@ -40,8 +45,10 @@ public partial class Cam : Camera2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		Vector2 CenterPos = GlobalPosition + (Size / 2);
+		Viewer.Position = Size / 2;
 		GetParent().MoveChild(this, GetParent().GetChildCount() - 1);
-		Position += Input.GetVector("Move Left", "Move Right", "Move Up", "Move Down") * (float)delta * 500 / Zoom;
+		Position += Input.GetVector("Move Left", "Move Right", "Move Up", "Move Down") * (float)delta * 500 / Viewer.Zoom;
 		if (ZoomInButton.ButtonPressed == true)
 		{
 			ZoomIn -= (float)delta;
@@ -55,7 +62,7 @@ public partial class Cam : Camera2D
 		{
 			ZoomIn = 1;
 		}
-		Zoom = new(1/ZoomIn, 1/ZoomIn);
+		Viewer.Zoom = new(1/ZoomIn, 1/ZoomIn);
 		Scale = new(ZoomIn, ZoomIn);
 		HideableUI.Visible = !HideUI.ButtonPressed;
 
@@ -75,13 +82,13 @@ public partial class Cam : Camera2D
 			ConnectionManagement.Visible = true;
 			ConnectionManagement.ProcessMode = ProcessModeEnum.Inherit;
 		}
-		Godot.Collections.Array<Node> asdf = (GetParent() as SaveLoad).StickyList.GetChildren();
+		Godot.Collections.Array<Node> asdf = (GetParent().GetChild(0) as SaveLoad).StickyList.GetChildren();
         for (int i = 0; i < asdf.Count; i++)
 		{
             Node item = asdf[i];
 			item.Name = i.ToString();
         }
-		asdf = (GetParent() as SaveLoad).ConnectionList.GetChildren();
+		asdf = (GetParent().GetChild(0) as SaveLoad).ConnectionList.GetChildren();
         for (int i = 0; i < asdf.Count; i++)
 		{
             Node item = asdf[i];
@@ -105,8 +112,8 @@ public partial class Cam : Camera2D
 	{
 		CurrentSticky = NewSticky.Instantiate() as Sticky;
 		// AddChild(CurrentSticky);
-		CurrentSticky.Name = (GetParent() as SaveLoad).StickyList.GetChildCount().ToString();
-		(GetParent() as SaveLoad).StickyList.AddChild(CurrentSticky);
+		CurrentSticky.Name = (GetParent().GetChild(0) as SaveLoad).StickyList.GetChildCount().ToString();
+		(GetParent().GetChild(0) as SaveLoad).StickyList.AddChild(CurrentSticky);
 		MoveSticky();
 		WriteSticky();
 		// if (TargetTexture.Text != "")
@@ -124,7 +131,7 @@ public partial class Cam : Camera2D
 			}
 			else
 			{
-				CurrentSticky.Position = Position + new Vector2(TargetX.Text.ToFloat(), TargetY.Text.ToFloat());
+				CurrentSticky.Position = Position + (Size / 2) + new Vector2(TargetX.Text.ToFloat(), TargetY.Text.ToFloat());
 			}
 			CurrentSticky.Size = new(TargetWidth.Text.ToFloat(), TargetHeight.Text.ToFloat());
 		}
@@ -190,10 +197,10 @@ public partial class Cam : Camera2D
 		try
 		{
 			CurrentConnection = NewConnection.Instantiate() as Connection;
-			CurrentConnection.Name = (GetParent() as SaveLoad).ConnectionList.GetChildCount().ToString();
+			CurrentConnection.Name = (GetParent().GetChild(0) as SaveLoad).ConnectionList.GetChildCount().ToString();
 			CurrentConnection.A = A;
 			CurrentConnection.B = B;
-			(GetParent() as SaveLoad).ConnectionList.AddChild(CurrentConnection);
+			(GetParent().GetChild(0) as SaveLoad).ConnectionList.AddChild(CurrentConnection);
 			WriteConnection();
 			SetConnectionWidth();
 			// if (TargetTexture.Text != "")
@@ -277,7 +284,7 @@ public partial class Cam : Camera2D
 	// }
 	// public void UpdateUI()
 	// {
-	// 	(GetParent() as SaveLoad).ResetUI();
+	// 	(GetParent().GetChild(0) as SaveLoad).ResetUI();
 	// }
 	// public void Save()
 	// {
@@ -300,11 +307,11 @@ public partial class Cam : Camera2D
 	{
 		// GetTree().ChangeSceneToFile("user://" + FileName.Text + ".tscn");
 		GetTree().ChangeSceneToFile(Address);
-		(GetParent() as SaveLoad).ResetUI();
+		(GetParent().GetChild(0) as SaveLoad).ResetUI();
 	}
 	public void ResetUI()
 	{
-		(GetParent() as SaveLoad).ResetUI();
+		(GetParent().GetChild(0) as SaveLoad).ResetUI();
 	}
 	public void GoToLicense()
 	{
@@ -314,7 +321,7 @@ public partial class Cam : Camera2D
     {
 		if (@event is InputEventMouseMotion && Input.IsActionPressed("Mouse Move"))
 		{
-			Position -= (@event as InputEventMouseMotion).Relative / Zoom;
+			Position -= (@event as InputEventMouseMotion).Relative / Viewer.Zoom;
 		}
         base._Input(@event);
     }

@@ -13,12 +13,8 @@ config_version=5
 config/name="For the Love of Flowcharts"
 config/version="1.1"
 run/main_scene="res://Main.tscn"
-config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://Icon.png"
-
-[display]
-
-window/stretch/mode="canvas_items"
 
 [dotnet]
 

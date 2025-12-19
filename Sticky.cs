@@ -13,7 +13,7 @@ public partial class Sticky : Button//, ISaveable
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		TheCam = GetViewport().GetCamera2D() as Cam;
+		TheCam = GetViewport().GetCamera2D().GetParent() as Cam;
 		Owner = TheCam.GetParent();
 		if (Icon != null)
 		{

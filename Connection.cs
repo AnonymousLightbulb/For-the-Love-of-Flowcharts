@@ -25,7 +25,7 @@ public partial class Connection : Line2D//, ISaveable
 		// {
 		// 	QueueFree();
 		// }
-		TheCam = GetViewport().GetCamera2D() as Cam;
+		TheCam = GetViewport().GetCamera2D().GetParent() as Cam;
 		Owner = TheCam.GetParent();
 		Display.Owner = TheCam.GetParent();
 		try

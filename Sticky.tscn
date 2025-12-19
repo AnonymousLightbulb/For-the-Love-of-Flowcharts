@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c6tph8x47c5p5"]
 
-[ext_resource type="Script" path="res://Sticky.cs" id="1_rus3s"]
+[ext_resource type="Script" uid="uid://ctegbfw6uk02b" path="res://Sticky.cs" id="1_rus3s"]
 
 [node name="Sticky" type="Button"]
 offset_right = 8.0

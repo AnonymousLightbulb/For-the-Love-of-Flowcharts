@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bpb0quq37dnh6"]
 
 [ext_resource type="Texture2D" uid="uid://evw7i6uujngs" path="res://arrow.png" id="1_02vwj"]
-[ext_resource type="Script" path="res://Connection.cs" id="2_4x30q"]
+[ext_resource type="Script" uid="uid://cx5nybocwpb4e" path="res://Connection.cs" id="2_4x30q"]
 
 [node name="Directional Connection" type="Line2D" node_paths=PackedStringArray("Display")]
 z_index = -1

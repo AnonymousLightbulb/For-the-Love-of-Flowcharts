@@ -39,13 +39,14 @@ keycode = 72
 [sub_resource type="Shortcut" id="Shortcut_jmtxg"]
 events = [SubResource("InputEventKey_1fs63")]
 
-[node name="Cam" type="Control" node_paths=PackedStringArray("Viewer", "StickyManagement", "TargetX", "TargetY", "TargetWidth", "TargetHeight", "TargetConnectionWidth", "RelativeToCam", "CopyClickedData", "HideUI", "HideableUI", "Mode", "ZoomInButton", "ZoomOutButton", "UpButton", "DownButton", "LeftButton", "RightButton", "ShowBlankConnecions", "ConnectionManagement", "TargetTexture", "FontSize")]
+[node name="Cam" type="Control" node_paths=PackedStringArray("Viewer", "StickyManagement", "TargetX", "TargetY", "TargetWidth", "TargetHeight", "TargetText", "TargetConnectionWidth", "RelativeToCam", "CopyClickedData", "HideUI", "HideableUI", "Mode", "ZoomInButton", "ZoomOutButton", "UpButton", "DownButton", "LeftButton", "RightButton", "ShowBlankConnecions", "ConnectionManagement", "FontSize")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_ac0aa")
 Viewer = NodePath("Camera2D")
 NewSticky = ExtResource("2_tiovj")
@@ -56,6 +57,7 @@ TargetX = NodePath("UI/ScrollContainer/Sticky Management/X Pos")
 TargetY = NodePath("UI/ScrollContainer/Sticky Management/Y Pos")
 TargetWidth = NodePath("UI/ScrollContainer/Sticky Management/X Size")
 TargetHeight = NodePath("UI/ScrollContainer/Sticky Management/Y Size")
+TargetText = NodePath("UI/HBoxContainer/Text")
 TargetConnectionWidth = NodePath("UI/ScrollContainer/Connection Management/Width")
 RelativeToCam = NodePath("UI/ScrollContainer/Sticky Management/Relative to Cam")
 CopyClickedData = NodePath("UI/HBoxContainer/Copy Clicked Data")
@@ -70,7 +72,6 @@ LeftButton = NodePath("Movement/Left")
 RightButton = NodePath("Movement/Right")
 ShowBlankConnecions = NodePath("UI/ScrollContainer/Connection Management/Show Blank Connections")
 ConnectionManagement = NodePath("UI/ScrollContainer/Connection Management")
-TargetTexture = NodePath("UI/HBoxContainer/Texture Adress")
 FontSize = NodePath("UI/HBoxContainer/Font Size")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -83,6 +84,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="+" type="Button" parent="Movement"]
 layout_mode = 1
@@ -167,6 +169,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI"]
 layout_mode = 1
@@ -335,34 +338,26 @@ offset_right = 1152.0
 offset_bottom = 94.0
 
 [node name="Mode" type="Button" parent="UI/HBoxContainer"]
+custom_minimum_size = Vector2(151, 44)
 layout_mode = 0
 offset_right = 81.0
 offset_bottom = 44.0
 theme_override_font_sizes/font_size = 26
 toggle_mode = true
-text = "Sticky
-"
+text = "Sticky"
 
-[node name="Text" type="LineEdit" parent="UI/HBoxContainer"]
+[node name="Text" type="TextEdit" parent="UI/HBoxContainer"]
 layout_mode = 0
-offset_left = 85.0
-offset_right = 193.0
+offset_left = 154.0
+offset_right = 262.0
 offset_bottom = 44.0
 theme_override_font_sizes/font_size = 26
 placeholder_text = "Text"
 
-[node name="Texture Adress" type="LineEdit" parent="UI/HBoxContainer"]
-layout_mode = 0
-offset_left = 197.0
-offset_right = 305.0
-offset_bottom = 44.0
-theme_override_font_sizes/font_size = 26
-placeholder_text = "Texture Adress"
-
 [node name="Copy Clicked Data" type="Button" parent="UI/HBoxContainer"]
 layout_mode = 0
-offset_left = 309.0
-offset_right = 543.0
+offset_left = 266.0
+offset_right = 500.0
 offset_bottom = 44.0
 theme_override_font_sizes/font_size = 26
 toggle_mode = true
@@ -371,8 +366,8 @@ text = "Copy Clicked Data"
 
 [node name="Font Size" type="LineEdit" parent="UI/HBoxContainer"]
 layout_mode = 0
-offset_left = 547.0
-offset_right = 667.0
+offset_left = 504.0
+offset_right = 624.0
 offset_bottom = 44.0
 theme_override_font_sizes/font_size = 26
 placeholder_text = "Font Size"
@@ -475,11 +470,12 @@ text = "Hide UI"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 4096
-layout_mode = 0
-offset_left = 575.0
-offset_top = 323.0
-offset_right = 577.0
-offset_bottom = 325.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.499
+anchor_top = 0.49800003
+anchor_right = 0.50100005
+anchor_bottom = 0.50200003
 color = Color(0, 0, 0, 1)
 
 [node name="Set Texture Sticky" type="FileDialog" parent="."]

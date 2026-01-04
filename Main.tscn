@@ -13,8 +13,9 @@ grow_vertical = 2
 
 [node name="World" type="Control" parent="." node_paths=PackedStringArray("CurrentUI", "ConnectionList", "StickyList")]
 anchors_preset = 0
+offset_top = -4.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 36.0
 script = ExtResource("1_tla0x")
 CurrentUI = NodePath("../Cam")
 ConnectionList = NodePath("Connections")

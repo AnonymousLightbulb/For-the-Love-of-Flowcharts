@@ -20,6 +20,10 @@ config/icon="res://Icon.png"
 
 project/assembly_name="Anonymous_Lightbulb-s Flowchart Maker"
 
+[gui]
+
+common/snap_controls_to_pixels=false
+
 [input]
 
 "Move Left"={

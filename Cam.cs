@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Numerics;
 
 public partial class Cam : Control
 {
@@ -14,7 +15,7 @@ public partial class Cam : Control
 	[Export] public LineEdit TargetY;
 	[Export] public LineEdit TargetWidth;
 	[Export] public LineEdit TargetHeight;
-	[Export] public LineEdit TargetText;
+	[Export] public TextEdit TargetText;
 	[Export] public LineEdit TargetConnectionWidth;
 	[Export] public Button RelativeToCam;
 	[Export] public Button CopyClickedData;
@@ -45,7 +46,8 @@ public partial class Cam : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Vector2 CenterPos = GlobalPosition + (Size / 2);
+		float StartSize = ZoomIn;
+		Godot.Vector2 CenterPos = GlobalPosition + (Size * Scale / 2);
 		Viewer.Position = Size / 2;
 		GetParent().MoveChild(this, GetParent().GetChildCount() - 1);
 		Position += Input.GetVector("Move Left", "Move Right", "Move Up", "Move Down") * (float)delta * 500 / Viewer.Zoom;
@@ -95,6 +97,11 @@ public partial class Cam : Control
 			item.Name = i.ToString();
         }
 		// GetViewport().
+		Godot.Vector2 NewCenterPos = GlobalPosition + (Size * Scale / 2);
+		if (Mathf.Abs(ZoomIn - StartSize) > Mathf.Epsilon)
+		{
+			Position -= NewCenterPos - CenterPos;
+		}
 	}
 
 	public void RemoveSticky()
@@ -131,7 +138,7 @@ public partial class Cam : Control
 			}
 			else
 			{
-				CurrentSticky.Position = Position + (Size / 2) + new Vector2(TargetX.Text.ToFloat(), TargetY.Text.ToFloat());
+				CurrentSticky.Position = Position + (Size / 2) + new Godot.Vector2(TargetX.Text.ToFloat(), TargetY.Text.ToFloat());
 			}
 			CurrentSticky.Size = new(TargetWidth.Text.ToFloat(), TargetHeight.Text.ToFloat());
 		}
@@ -142,8 +149,8 @@ public partial class Cam : Control
 	}
 	public void OffsetSticky()
 	{
-		CurrentSticky.Position += new Vector2(TargetX.Text.ToFloat(), TargetY.Text.ToFloat());
-		CurrentSticky.Size += new Vector2(TargetWidth.Text.ToFloat(), TargetHeight.Text.ToFloat());
+		CurrentSticky.Position += new Godot.Vector2(TargetX.Text.ToFloat(), TargetY.Text.ToFloat());
+		CurrentSticky.Size += new Godot.Vector2(TargetWidth.Text.ToFloat(), TargetHeight.Text.ToFloat());
 	}
 	public void WriteSticky()
 	{
